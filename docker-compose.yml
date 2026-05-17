@@ -1,0 +1,85 @@
+services:
+  # PostgreSQL Database
+  database:
+    image: postgres:14-alpine
+    container_name: hackthon-goal-tracking-db
+    environment:
+      POSTGRES_DB: goal_tracking
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "55432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - goal-tracking-network
+
+  # Backend API
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: hackthon-goal-tracking-backend
+    environment:
+      NODE_ENV: development
+      PORT: 5000
+      HOST: localhost
+      DB_HOST: database
+      DB_PORT: 5432
+      DB_NAME: goal_tracking
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_DIALECT: postgres
+      JWT_SECRET: your-super-secret-jwt-key-change-in-production
+      JWT_EXPIRES_IN: 7d
+      CORS_ORIGIN: http://localhost
+      LOG_TO_FILE: "true"
+    ports:
+      - "5001:5000"
+    depends_on:
+      database:
+        condition: service_healthy
+    volumes:
+      - ./backend/logs:/app/logs
+    command: sh -c "node scripts/bootstrap-runtime-db.js && npm start"
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:5000/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - goal-tracking-network
+    restart: unless-stopped
+
+  # Frontend Application
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: hackthon-goal-tracking-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://127.0.0.1/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    networks:
+      - goal-tracking-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  goal-tracking-network:
+    driver: bridge

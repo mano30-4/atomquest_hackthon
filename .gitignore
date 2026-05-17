@@ -1,0 +1,13 @@
+node_modules/
+dist/
+build/
+.vercel/
+.vercel-cache/
+.npm-cache/
+.env
+.DS_Store
+.docker-buildx/
+.docker-config/
+backend/logs/*.log
+*.log
+.vercel

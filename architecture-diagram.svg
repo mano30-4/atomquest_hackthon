@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980" role="img" aria-labelledby="title desc">
+  <title id="title">Goal Tracking Portal architecture</title>
+  <desc id="desc">Clean architecture diagram for a Vercel-hosted goal tracking portal with React frontend, Express API, application services, and Neon PostgreSQL.</desc>
+
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#2563eb"/>
+    </marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#0f172a" flood-opacity="0.10"/>
+    </filter>
+    <style>
+      .page { fill: #f8fafc; }
+      .title { font: 700 36px Inter, Arial, sans-serif; fill: #0f172a; }
+      .subtitle { font: 400 17px Inter, Arial, sans-serif; fill: #475569; }
+      .section { font: 700 15px Inter, Arial, sans-serif; fill: #475569; letter-spacing: 1.4px; }
+      .lane { fill: #ffffff; stroke: #dbe3ef; stroke-width: 1.5; rx: 8; }
+      .card { fill: #ffffff; stroke: #cbd5e1; stroke-width: 1.5; rx: 8; filter: url(#shadow); }
+      .blue { fill: #eff6ff; stroke: #3b82f6; }
+      .purple { fill: #f5f3ff; stroke: #8b5cf6; }
+      .green { fill: #ecfdf5; stroke: #10b981; }
+      .amber { fill: #fffbeb; stroke: #f59e0b; }
+      .ink { font: 700 19px Inter, Arial, sans-serif; fill: #0f172a; }
+      .body { font: 400 14px Inter, Arial, sans-serif; fill: #475569; }
+      .body-strong { font: 700 14px Inter, Arial, sans-serif; fill: #334155; }
+      .small { font: 600 12px Inter, Arial, sans-serif; fill: #64748b; }
+      .num { font: 700 13px Inter, Arial, sans-serif; fill: #ffffff; }
+      .line { stroke: #2563eb; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .soft-line { stroke: #64748b; stroke-width: 2.2; fill: none; marker-end: url(#arrow); }
+      .dash { stroke: #94a3b8; stroke-width: 2; fill: none; stroke-dasharray: 7 7; marker-end: url(#arrow); }
+      .badge { fill: #2563eb; }
+    </style>
+  </defs>
+
+  <rect class="page" width="1600" height="980"/>
+
+  <text class="title" x="80" y="72">Goal Tracking Portal Architecture</text>
+  <text class="subtitle" x="80" y="105">Vercel-hosted React app with a serverless Express API, role-based workflows, audit trail, and Neon PostgreSQL.</text>
+
+  <rect class="lane" x="70" y="150" width="1460" height="460"/>
+  <text class="section" x="95" y="185">HOSTED APPLICATION</text>
+
+  <text class="section" x="110" y="235">USERS</text>
+  <rect class="card" x="100" y="265" width="220" height="82"/>
+  <text class="ink" x="130" y="300">Employee</text>
+  <text class="body" x="130" y="326">Create goals, update actuals</text>
+
+  <rect class="card" x="100" y="370" width="220" height="82"/>
+  <text class="ink" x="130" y="405">Manager L1</text>
+  <text class="body" x="130" y="431">Approve, return, comment</text>
+
+  <rect class="card" x="100" y="475" width="220" height="82"/>
+  <text class="ink" x="130" y="510">Admin / HR</text>
+  <text class="body" x="130" y="536">Users, reports, governance</text>
+
+  <text class="section" x="430" y="235">FRONTEND</text>
+  <rect class="card blue" x="390" y="285" width="260" height="272"/>
+  <text class="ink" x="425" y="330">React + Vite</text>
+  <text class="body" x="425" y="358">Static site on Vercel</text>
+  <text class="body" x="425" y="382">Role-based screens</text>
+  <text class="body" x="425" y="406">Axios calls to /api</text>
+  <text class="body" x="425" y="430">Login, dashboards, forms</text>
+  <text class="body" x="425" y="454">Reports and exports</text>
+
+  <text class="section" x="760" y="235">API ENTRY</text>
+  <rect class="card purple" x="720" y="285" width="270" height="160"/>
+  <text class="ink" x="755" y="330">Express API</text>
+  <text class="body" x="755" y="358">Vercel serverless function</text>
+  <text class="body" x="755" y="382">api/index.js</text>
+  <text class="body" x="755" y="406">JWT authentication</text>
+
+  <text class="section" x="1085" y="235">SERVICES</text>
+  <rect class="card" x="1050" y="255" width="230" height="58"/>
+  <text class="body-strong" x="1080" y="290">Goal sheets</text>
+  <rect class="card" x="1050" y="325" width="230" height="58"/>
+  <text class="body-strong" x="1080" y="360">Approvals</text>
+  <rect class="card" x="1050" y="395" width="230" height="58"/>
+  <text class="body-strong" x="1080" y="430">Quarterly check-ins</text>
+  <rect class="card" x="1050" y="465" width="230" height="58"/>
+  <text class="body-strong" x="1080" y="500">Reports and exports</text>
+  <rect class="card" x="1050" y="535" width="230" height="58"/>
+  <text class="body-strong" x="1080" y="570">Audit trail</text>
+
+  <text class="section" x="1370" y="235">DATA</text>
+  <rect class="card green" x="1340" y="300" width="160" height="145"/>
+  <text class="ink" x="1365" y="350">Neon</text>
+  <text class="ink" x="1365" y="376">PostgreSQL</text>
+  <text class="body" x="1365" y="410">Demo + runtime</text>
+
+  <rect class="card amber" x="1340" y="475" width="160" height="82"/>
+  <text class="body-strong" x="1365" y="510">Bootstrap</text>
+  <text class="body" x="1365" y="534">Seeded fake data</text>
+
+  <path class="line" d="M320 305 H390"/>
+  <path class="line" d="M320 411 H390"/>
+  <path class="line" d="M320 516 H390"/>
+  <path class="line" d="M650 365 H720"/>
+  <path class="line" d="M990 365 H1050"/>
+  <path class="line" d="M1280 424 H1340"/>
+  <path class="dash" d="M1420 475 V445"/>
+
+  <text class="small" x="344" y="291">browser</text>
+  <text class="small" x="670" y="347">HTTPS /api</text>
+  <text class="small" x="1008" y="347">validated request</text>
+  <text class="small" x="1295" y="406">Sequelize</text>
+
+  <rect class="lane" x="70" y="650" width="1460" height="245"/>
+  <text class="section" x="95" y="685">BUSINESS WORKFLOW</text>
+
+  <g>
+    <circle class="badge" cx="130" cy="748" r="18"/>
+    <text class="num" x="126" y="753">1</text>
+    <rect class="card" x="160" y="715" width="185" height="66"/>
+    <text class="body-strong" x="185" y="745">Draft goals</text>
+    <text class="body" x="185" y="766">Employee prepares sheet</text>
+  </g>
+
+  <g>
+    <circle class="badge" cx="405" cy="748" r="18"/>
+    <text class="num" x="401" y="753">2</text>
+    <rect class="card" x="435" y="715" width="190" height="66"/>
+    <text class="body-strong" x="460" y="745">Validate rules</text>
+    <text class="body" x="460" y="766">100%, max 8, min 10%</text>
+  </g>
+
+  <g>
+    <circle class="badge" cx="685" cy="748" r="18"/>
+    <text class="num" x="681" y="753">3</text>
+    <rect class="card" x="715" y="715" width="190" height="66"/>
+    <text class="body-strong" x="740" y="745">Manager review</text>
+    <text class="body" x="740" y="766">Approve or return</text>
+  </g>
+
+  <g>
+    <circle class="badge" cx="965" cy="748" r="18"/>
+    <text class="num" x="961" y="753">4</text>
+    <rect class="card" x="995" y="715" width="190" height="66"/>
+    <text class="body-strong" x="1020" y="745">Lock goals</text>
+    <text class="body" x="1020" y="766">Approved plan freezes</text>
+  </g>
+
+  <g>
+    <circle class="badge" cx="1245" cy="748" r="18"/>
+    <text class="num" x="1241" y="753">5</text>
+    <rect class="card" x="1275" y="715" width="190" height="66"/>
+    <text class="body-strong" x="1300" y="745">Check-ins</text>
+    <text class="body" x="1300" y="766">Actuals and comments</text>
+  </g>
+
+  <path class="soft-line" d="M345 748 H385"/>
+  <path class="soft-line" d="M625 748 H665"/>
+  <path class="soft-line" d="M905 748 H945"/>
+  <path class="soft-line" d="M1185 748 H1225"/>
+
+  <rect class="card blue" x="160" y="815" width="1305" height="44"/>
+  <text class="body" x="190" y="842">Reports and audit logs are built from the same database, so every role sees consistent demo data across dashboards, approvals, check-ins, and exports.</text>
+</svg>

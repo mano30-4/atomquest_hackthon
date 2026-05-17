@@ -1,0 +1,8 @@
+{
+  "name": "goal-tracking-portal",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "npm install --cache .npm-cache --prefix backend --omit=dev && npm install --cache .npm-cache --prefix frontend && npm run build --prefix frontend"
+  }
+}
