@@ -8,8 +8,8 @@ All seeded accounts use the password `Password123!`.
 
 | Role | Email | What to try |
 |---|---|---|
-| Admin / HR | `admin@atomquest.com` | Manage users, thrust areas, settings, reports, and audit logs |
-| Manager | `manager1@atomquest.com` | Review Sales and Customer Success goal sheets, approve or return submissions, view team reports |
+| Admin / HR | `admin@atomquest.com` | Manage users, thrust areas, settings, reports, audit logs, and report exports |
+| Manager | `manager1@atomquest.com` | Review Sales and Customer Success goal sheets, approve or return submissions, view team reports, and download exports |
 | Manager | `manager2@atomquest.com` | Review Engineering and Quality goal sheets |
 | Employee | `employee1@atomquest.com` | View approved locked goals and add quarterly check-ins |
 | Employee | `employee2@atomquest.com` | See a submitted sheet waiting for manager review |
@@ -20,9 +20,9 @@ All seeded accounts use the password `Password123!`.
 
 Employees can create or edit goals only while their goal sheet is `draft` or `returned`. After submission, the sheet is read-only until a manager returns it. After manager approval, goals are locked and employees can update quarterly achievements, not rewrite the approved plan.
 
-Managers can see only their direct reports. They can approve submitted goal sheets or return them with feedback. Manager dashboards and reports use the same seeded users, goal sheets, check-ins, and approval states.
+Managers can see only their direct reports. They can approve submitted goal sheets or return them with feedback. Manager dashboards and reports use the same seeded users, goal sheets, check-ins, and approval states. Manager reports include CSV and Excel download actions.
 
-Admins can manage users, thrust areas, system settings, reports, and audit logs. Admin data is fake demo data only; no personal user data is required.
+Admins can manage users, thrust areas, system settings, reports, audit logs, and report exports. Admin data is fake demo data only; no personal user data is required.
 
 ## Included Workflows
 
@@ -32,7 +32,7 @@ Admins can manage users, thrust areas, system settings, reports, and audit logs.
 - Manager check-in comments.
 - Admin user and thrust-area management.
 - Reports for achievement, completion, status distribution, and thrust-area distribution.
-- CSV achievement export and Excel completion export.
+- Visible report download buttons for `achievement-report.csv` and `completion-report.xlsx`.
 - Audit log entries for key seeded and runtime actions.
 
 ## Local Run
